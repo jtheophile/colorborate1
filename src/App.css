@@ -1,0 +1,25 @@
+i {
+    text-decoration: none !important;
+}
+
+#cat {
+    border-radius: 50px;
+    height: 115px;
+    width: 250px;
+    margin: 15px;
+}
+
+#nl {text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+#morecat {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    padding-top:50px;
+}
+
+
+    
