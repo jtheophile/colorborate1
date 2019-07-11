@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from "react";
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
+import Axios from "axios";
+
+import Home from './components/search/Home';
 import Navbar from './components/utility/NavbarB';
 import Footer from './components/utility/Footer';
-import Popups from './components/utility/Popups';
 import SearchResults from './components/search/SearchResults';
 import SearchCat from './components/search/SearchCat';
 import Login from './components/users/Login';
@@ -20,9 +21,27 @@ import Today from './components/misc/Today';
 import Collab from './components/misc/Collab';
 
 
-function App() {
-  return (
-    <Router>
+
+class App extends Component {
+
+  constructor(props) {
+    super(props)
+    console.log("This is my initializer")
+
+    this.state = {rows: <p>This is my row</p>}
+  }
+
+
+
+
+  loggedIn = async () => {
+    const res = await Axios.get("/api/loggedIn"); 
+    return res.data;
+}
+
+  render() {
+    return(
+      <Router>
       <Navbar />
       <Switch>        
         <Route exact path='/' component={Home} />
@@ -36,7 +55,6 @@ function App() {
 
         <Route exact path='/utility/navbar' component={Navbar} />
         <Route exact path='/utility/footer' component={Footer} />
-        <Route exact path='/utility/popups' component={Popups} />
 
         <Route exact path='/misc/resources' component={Resources} />
         <Route exact path='/misc/contact' component={Contact} />
@@ -45,11 +63,14 @@ function App() {
         <Route exact path='/misc/foc' component={Foc} />
 
         <Route exact path='/misc/today' component={Today} />
-        <Route exact path='/misc/collab' component={Collab} />        
+        <Route exact path='/misc/collab' component={Collab} />    
+            
       </Switch>
       <Footer />
     </Router>
-  );
-}
 
+    
+    )
+  }
+}
 export default App;

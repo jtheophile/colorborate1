@@ -17,4 +17,19 @@ UserModel.findUserById = uid => {
     return UserModel.findById(uid);
 }
 
+// find user by credentials
+UserModel.findUserByCredentials = (username, password) => {
+    return UserModel.findOne({username:username, password:password});
+}
+
+// find user by username
+UserModel.findUserByUsername = (username) => {
+    return UserModel.findOne({username:username});
+}
+
+// update user
+UserModel.updateUser = (user) => {
+    return UserModel.updateOne({_id:user._id}, user);
+}
+
 module.exports = UserModel;

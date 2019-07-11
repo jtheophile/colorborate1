@@ -8,7 +8,7 @@ export default class Profile extends Component {
                 <form>
                     <div class="container">
                         <div>
-                            <h1>user profile pg</h1>
+                            <h1>Edit user profile pg</h1>
 
                             <button className="btn btn-outline-success btn-block" type="submit"> User </button>
 

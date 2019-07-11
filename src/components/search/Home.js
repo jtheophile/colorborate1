@@ -70,9 +70,9 @@ export default class home extends Component {
                     <div className="row">
                         <button id="cat" type="button" class="btn btn-outline-success" class="btn btn-success btn-lg">Wellness</button>
                         <Link to='/misc/today'>
-                        <button id="cat" type="button" class="btn btn-outline-success" class="btn btn-success btn-lg">Events</button></Link>
-                        <button id="cat" type="button" class="btn btn-outline-success" class="btn btn-success btn-lg">Shopping</button>
-                        <button id="cat" type="button" class="btn btn-outline-success" class="btn btn-success btn-lg">Nutritionist</button>
+                        <button id="cat" class="btn btn-outline-success" class="btn btn-success btn-lg">Events</button></Link>
+                        <button id="cat" class="btn btn-outline-success" class="btn btn-success btn-lg">Shopping</button>
+                        <button id="cat" class="btn btn-outline-success" class="btn btn-success btn-lg">Nutritionist</button>
                         </div>
 
                             <div >
