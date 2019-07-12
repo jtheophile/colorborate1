@@ -22,8 +22,8 @@ export default class Footer extends Component {
                             <input type="text" class="form-control" id="business name" />
                         </div>
                         <div>
-                            <p href="#" class="btn btn-primary mb-1">Join Our Mailing List</p>
-                            <a href="misc/contact" class="btn btn-primary">Hit Us Up</a>
+                            <a href="#" class="btn btn-success mr-4">Join Our Mailing List</a>
+                            <a href="misc/contact" class="btn btn-success">Hit Us Up</a>
                         </div>
                     </div>
                 </div>
@@ -120,16 +120,13 @@ export default class Footer extends Component {
                                 Calendar/Today
                                 </button>
                             </Link>
-                        </div>
-
-                        
+                        </div>                                                
                     </div>
+                    
                 </div>
+                    <br></br>
                 <footer>Copyright COLORborate - All Rights Reserved - DOL Funding Disclosure - Registered 501(c)(3). blah blah </footer>
             </div>
-
-            
-
             )
         }
     }

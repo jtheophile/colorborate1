@@ -62,17 +62,17 @@ export default class home extends Component {
                     <h4> Browse Businesses by Category </h4>
 
                     <div className="row">
-                        <button id="cat" type="button" class="btn btn-outline-success" class="btn btn-success btn-lg">Dudley Businesses</button>
-                        <button id="cat" type="button" class="btn btn-outline-success" class="btn btn-success btn-lg">Dorchester Businesses</button>
-                        <button id="cat" type="button" class="btn btn-outline-success" class="btn btn-success btn-lg">Freelancers</button>
-                        <button id="cat" type="button" class="btn btn-outline-success" class="btn btn-success btn-lg">Web Designers</button>
+                        <button id="cat" type="button" class="btn btn-success btn-lg">Dudley Businesses</button>
+                        <button id="cat" type="button" class="btn btn-success btn-lg">Dorchester Businesses</button>
+                        <button id="cat" type="button" class="btn btn-success btn-lg">Freelancers</button>
+                        <button id="cat" type="button" class="btn btn-success btn-lg">Web Designers</button>
                     </div>
                     <div className="row">
-                        <button id="cat" type="button" class="btn btn-outline-success" class="btn btn-success btn-lg">Wellness</button>
+                        <button id="cat" type="button" class="btn btn-success btn-lg">Wellness</button>
                         <Link to='/misc/today'>
-                        <button id="cat" class="btn btn-outline-success" class="btn btn-success btn-lg">Events</button></Link>
-                        <button id="cat" class="btn btn-outline-success" class="btn btn-success btn-lg">Shopping</button>
-                        <button id="cat" class="btn btn-outline-success" class="btn btn-success btn-lg">Nutritionist</button>
+                        <button id="cat" class="btn btn-success btn-lg">Events</button></Link>
+                        <button id="cat" class="btn btn-success btn-lg">Shopping</button>
+                        <button id="cat" class="btn btn-success btn-lg">Nutritionist</button>
                         </div>
 
                             <div >
