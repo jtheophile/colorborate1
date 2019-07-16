@@ -42,7 +42,7 @@ class Navbar extends Component {
                               </Link>           
 
                               
-                              <button type="button" class="btn btn-outline-success mr-2" data-toggle="modal" data-target="#exampleModalCenter">
+                              <button type="button" className="btn btn-outline-success mr-2" data-toggle="modal" data-target="#exampleModalCenter">
                                 Login
                               </button>
                            

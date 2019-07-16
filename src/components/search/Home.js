@@ -1,82 +1,121 @@
 import React, { Component } from 'react';
 import { Link }  from 'react-router-dom';
+import Axios from 'axios';
 
 
 export default class home extends Component {
+    state = {
+        allUsers:[],
+        usersShowing: [],        
+        searchInput: '',
+
+    };
+
+    //findAllUsers data function
+    async componentDidMount() {
+        const res = await Axios.get(`/api/user/${this.props.uid}/user`);
+        this.filterAllUsersData(res.data);
+    }
+
+    searchSite = async e => {
+        await this.setState({
+            [e.target.name]: e.target.value
+        });
+        this.filterAllUsersData(this.state.searchInput);
+    };
+
+    filterAllUsersData = text => {
+        //make copy of all users
+        let findAllUsers = this.state.users;
+        // filter the copy
+        findAllUsers = findAllUsers.filter(user => user.name.toUpperCase().includes(text.toUpperCase()))
+        // use copy to replace the old list
+        this.setState({
+            users: findAllUsers,
+            usersShowing: findAllUsers
+
+        })
+    }
+
     render() {
         return (
             <div className="container text-center">
                 <br></br>
                 <p>Support Black & Brown Businesses | Collaborate on Projects & Find Talent</p>
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                    <ol className="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                        <img src="https://s3-media3.fl.yelpcdn.com/bphoto/tSRNA5p7JjoDa0yrsoBesw/180s.jpg" class="d-block w-100" alt="Daryls" width="500" height="400" />
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                        <img src="https://s3-media3.fl.yelpcdn.com/bphoto/tSRNA5p7JjoDa0yrsoBesw/180s.jpg" className="d-block w-100" alt="Daryls" width="500" height="400" />
                         </div>
-                        <div class="carousel-item">
-                        <img src="https://static.wixstatic.com/media/b8f674_e5cad7ece4984d859d02b01f6c5acd47~mv2_d_3000_3000_s_4_2.jpg" class="d-block w-100" alt="Slades" width="500" height="400"/>
+                        <div className="carousel-item">
+                        <img src="https://static.wixstatic.com/media/b8f674_e5cad7ece4984d859d02b01f6c5acd47~mv2_d_3000_3000_s_4_2.jpg" className="d-block w-100" alt="Slades" width="500" height="400"/>
                         </div>
-                        <div class="carousel-item">
-                        <img src="https://scontent.fbos1-1.fna.fbcdn.net/v/t1.0-9/27337171_1016693201820287_902293145280662378_n.jpg?_nc_cat=106&_nc_oc=AQktjgZhNNOJUw5Z30KZWZQoYVuTEOrRTTWVaCpuHy2uQDCOBIExx5fsuqmKQnTySXQ&_nc_ht=scontent.fbos1-1.fna&oh=5762fd05e10787705b085ba806c70625&oe=5D7B9924" class="d-block w-100" alt="QC" width="500" height="400" />
+                        <div className="carousel-item">
+                        <img src="https://scontent.fbos1-1.fna.fbcdn.net/v/t1.0-9/27337171_1016693201820287_902293145280662378_n.jpg?_nc_cat=106&_nc_oc=AQktjgZhNNOJUw5Z30KZWZQoYVuTEOrRTTWVaCpuHy2uQDCOBIExx5fsuqmKQnTySXQ&_nc_ht=scontent.fbos1-1.fna&oh=5762fd05e10787705b085ba806c70625&oe=5D7B9924" className="d-block w-100" alt="QC" width="500" height="400" />
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
+                    <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                    <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="sr-only">Next</span>
                     </a>
                 </div>
                 <br></br>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="What are you looking For? Food, homes services, photographer, producer?" aria-label="What are you looking For?" aria-describedby="basic-addon2"/>
-                        <div class="input-group-append">
-                            
+                <div className="input-group">
+                    <input 
+                    onChange={this.searchInput}
+                    type="text" 
+                    className="form-control" 
+                    name="searchInput" 
+                    placeholder="What are you looking For? Food, homes services, photographer, producer?" 
+                    aria-label="What are you looking For?" aria-describedby="basic-addon2"/>
+                        <div className="input-group-append">                 
 
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Near Me</a>
-                                        <a class="dropdown-item" href="#">Dorchester</a>
-                                        <a class="dropdown-item" href="#">Roxbury</a>
-                                        <a class="dropdown-item" href="#">Mattapan</a>
-                                        <a class="dropdown-item" href="#">Jamaica Plain</a>
-                                        <a class="dropdown-item" href="#">Greater Boston Area</a>
-                                        <a class="dropdown-item" href="#">Somerville</a>
-                                        <a class="dropdown-item" href="#">North America</a>
-                                            <div role="separator" class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#">Global</a>
+                            <div className="input-group-append">
+                                <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</button>
+                                    <div className="dropdown-menu">
+                                        <a className="dropdown-item" href="#">Near Me</a>
+                                        <a className="dropdown-item" href="#">Dorchester</a>
+                                        <a className="dropdown-item" href="#">Roxbury</a>
+                                        <a className="dropdown-item" href="#">Mattapan</a>
+                                        <a className="dropdown-item" href="#">Jamaica Plain</a>
+                                        <a className="dropdown-item" href="#">Greater Boston Area</a>
+                                        <a className="dropdown-item" href="#">Somerville</a>
+                                        <a className="dropdown-item" href="#">North America</a>
+                                            <div role="separator" className="dropdown-divider"></div>
+                                                <a className="dropdown-item" href="#">Global</a>
                                             </div>
                                     </div>
                             </div>
-                            <Link to='/search/searchResults' button class="btn btn-outline-secondary" type="btn">Search</Link>
+                             < button className="btn btn-outline-secondary" type="btn">Search</ button>
                     </div>
                     <br></br>
                     <h4> Browse Businesses by Category </h4>
 
                     <div className="row">
-                        <button id="cat" type="button" class="btn btn-success btn-lg">Dudley Businesses</button>
-                        <button id="cat" type="button" class="btn btn-success btn-lg">Dorchester Businesses</button>
-                        <button id="cat" type="button" class="btn btn-success btn-lg">Freelancers</button>
-                        <button id="cat" type="button" class="btn btn-success btn-lg">Web Designers</button>
+                        <button id="cat" type="button" className="btn btn-success btn-lg">Dudley Businesses</button>
+                        <button id="cat" type="button" className="btn btn-success btn-lg">Dorchester Businesses</button>
+                        <button id="cat" type="button" className="btn btn-success btn-lg">Freelancers</button>
+                        <button id="cat" type="button" className="btn btn-success btn-lg">Web Designers</button>
                     </div>
                     <div className="row">
-                        <button id="cat" type="button" class="btn btn-success btn-lg">Wellness</button>
+                        <button id="cat" type="button" className="btn btn-success btn-lg">Wellness</button>
                         <Link to='/misc/today'>
-                        <button id="cat" class="btn btn-success btn-lg">Events</button></Link>
-                        <button id="cat" class="btn btn-success btn-lg">Shopping</button>
-                        <button id="cat" class="btn btn-success btn-lg">Nutritionist</button>
+                        <button id="cat" className="btn btn-success btn-lg">Events</button></Link>
+                        <button id="cat" className="btn btn-success btn-lg">Shopping</button>
+                        <button id="cat" className="btn btn-success btn-lg">Nutritionist</button>
                         </div>
 
                             <div >
-                                <a id="morecat" href='search/searchCat' class="text-decoration-none mt-20">Check out more categories.</a>
+                                <a id="morecat" href='search/searchCat' className="text-decoration-none mt-20">Check out more categories.</a>
                             </div>
                             <br></br>
                         </div>

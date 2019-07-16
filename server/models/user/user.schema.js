@@ -11,7 +11,7 @@ const UserSchema = mongoose.Schema(
         lastName: {type: String, default: ""},
         email: {type: String, default: ""},
         dateCreated: {type: Date, default: Date.now},
-        role: { type: String, enum: ['admin', 'regular', "business", "partner"], default: 'none'}
+        role: { type: String, enum: ['admin', 'business', 'partner', 'regular'], default: 'regular'}
     }, {collection: "user"}
 );
 

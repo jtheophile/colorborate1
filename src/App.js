@@ -24,17 +24,7 @@ import Collab from './components/misc/Collab';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props)
-    console.log("This is my initializer")
-
-    this.state = {rows: <p>This is my row</p>}
-  }
-
-
-
-
-  loggedIn = async () => {
+    loggedIn = async () => {
     const res = await Axios.get("/api/loggedIn"); 
     return res.data;
 }
@@ -50,8 +40,8 @@ class App extends Component {
 
         <Route exact path='/users/login' component={Login} />
         <Route exact path='/register' component={Register} />
-        <Route exact path='/users/profile' component={Profile} />
-        <Route exact path='/users/UserP' component={UserP} />
+        <Route exact path='/users/:id' component={UserP} />
+        <Route exact path='/users/:id/edit' component={Profile} />
 
         <Route exact path='/utility/navbar' component={Navbar} />
         <Route exact path='/utility/footer' component={Footer} />

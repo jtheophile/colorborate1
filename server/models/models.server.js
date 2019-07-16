@@ -1,4 +1,4 @@
-var connectionString = 'mongodb://127.0.0.1:27017/colorborate'; // for local host to connect to db
+var connectionString = 'mongodb://127.0.0.1:27017/colorborate1'; // for local host to connect to db
 
 if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely | connect with heroku
   var username = process.env.MLAB_USERNAME_WEBDEV; // get from environment
