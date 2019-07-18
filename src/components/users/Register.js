@@ -37,7 +37,7 @@ export default class Register extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { username, password, password2, firstName, lastName, email, zipCode, role, businessName, businessAddress, namePosition, website, facebook, instagram, twitter, categories } = this.state;
+    const { username, password, password2, firstName, lastName, email, zipCode, role, businessName, businessAddress, namePosition, website, facebook, instagram, twitter, categories} = this.state;
     this.register(username, password, password2, firstName, lastName, email, zipCode, role, businessName, businessAddress, namePosition, website, facebook, instagram, twitter, categories);
   }
 
@@ -98,7 +98,7 @@ export default class Register extends Component {
         facebook,
         instagram,
         twitter,
-        categories
+        categories,
       };
       //send to server   
       const res2 = await axios.post("/api/register", newUser);
@@ -276,15 +276,13 @@ export default class Register extends Component {
               value={categories}
             />
           </div>
-
-
-          <div>
+            <div>
             <button className="btn btn-success btn-block mb-2">Submit</button>
           </div>
 
           <Link className="btn btn-success btn-block" to="/">
             Cancel
-                    </Link>
+          </Link>
 
 
           <br></br>

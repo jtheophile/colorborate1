@@ -28,7 +28,7 @@ export default class home extends Component {
 
     filterAllUsersData = () => {
         const checkInput = (user, text) => {
-            console.log(user.namePosition)
+           
             return (user.businessName && user.businessName.includes(text)) || 
             (user.namePosition && user.namePosition.includes(text)) || 
             (user.categories && user.categories.includes(text))
@@ -36,18 +36,21 @@ export default class home extends Component {
 
         const newUsers = this.state.users.filter(
             (user) => checkInput(user, this.state.searchInput)
-        )
-
+        )    
+        
         this.setState({
             filteredUsers: newUsers
         })
-
-        console.log(newUsers);
         
+
+        this.props.history.push({
+            pathname: "/search/searchResults",
+            state: { users: newUsers }
+          })
     }
 
     render() {
-        const { uid } = this.props
+     
         return (
             <div className="container text-center">
                 <br></br>
@@ -83,31 +86,15 @@ export default class home extends Component {
                     <input
                         onChange={this.searchResults}
                         type="text"
-                        className="form-control"
+                        className="form-control mb-2"
                         name="searchInput"
                         placeholder="What are you looking For? Food, homes services, photographer, producer?"
                         aria-label="What are you looking For?"
                         aria-describedby="basic-addon2" />
-                    <div className="input-group-append">
-
-                        <div className="input-group-append">
-                            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</button>
-                            <div className="dropdown-menu">
-                                <a className="dropdown-item" href="#">Near Me</a>
-                                <a className="dropdown-item" href="#">Dorchester</a>
-                                <a className="dropdown-item" href="#">Roxbury</a>
-                                <a className="dropdown-item" href="#">Mattapan</a>
-                                <a className="dropdown-item" href="#">Jamaica Plain</a>
-                                <a className="dropdown-item" href="#">Greater Boston Area</a>
-                                <a className="dropdown-item" href="#">Somerville</a>
-                                <a className="dropdown-item" href="#">North America</a>
-                                <div role="separator" className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="#">Global</a>
-                            </div>
-                        </div>
-                    </div>
-                    < button onClick={this.filterAllUsersData} className="btn btn-outline-secondary" type="btn">Search</ button>
                 </div>
+                        
+                        < button onClick={this.filterAllUsersData} className="btn btn-success btn-block outline-secondary" type="btn">Find People Now!</ button>
+                    
                 <br></br>
                 <h4> Browse Businesses by Category </h4>
 

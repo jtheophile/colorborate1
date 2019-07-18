@@ -4,39 +4,30 @@ import { Link } from 'react-router-dom';
 
 export default class extends Component {  
 
-    render() {
+    render() {        
+        const { users } = this.props.location.state
+
         return (
-        <div className="center">
-            <h1>Results</h1> 
-            <ul className="list-unstyled">
-
-                <li className="media">
-                     <a href='/users/UserP' img src="https://www.wonderopolis.org/wp-content/uploads/2016/02/f_18.jpg" className="mr-3" alt="Search Test" width="250" height="200"></a>
-                    <div className="media-body">
-                        <Link to='/users/UserP'><h5 className="mt-0 mb-1">List-based media object</h5></Link>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        <div className="container" id="sr">
+            <h1> Search Results</h1> 
+            <li className="list-group-item" id="sr">
+               {users.map(user => (
+                    <div className="row">
+                        <div className="col">
+                            <Link to={`/users/${user._id}`}><h3>{user.businessName}</h3></Link>
+                            <h6>{user.businessAddress} </h6>
+                            <h6>{user.website} </h6>
+                            <h6>{user.facebook} </h6>
+                        </div>
                     </div>
-                </li>
 
-                <li className="media my-4">
-                <img src="https://www.wonderopolis.org/wp-content/uploads/2016/02/f_18.jpg" className="mr-3" alt="Search Test" width="250" height="200"/> 
-                    <div className="media-body">
-                        <h5 className="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    <div className="col">
+                        <h6>{user.twitter} </h6>
+                        <h6>{user.instagram} </h6>
                     </div>
-                </li>
-
-                <li className="media">
-                    < img src="https://www.wonderopolis.org/wp-content/uploads/2016/02/f_18.jpg" class="mr-3" alt="Search Test" width="250" height="200"/>
-                    <div className="media-body">
-                        <h5 className="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </li>
-            </ul>
+               )
+            </li>
         </div>
-
-           
         )
     }
-}
+};

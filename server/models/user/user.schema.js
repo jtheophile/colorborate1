@@ -19,7 +19,7 @@ const UserSchema = mongoose.Schema(
         facebook: {type: String, default: ""},
         instagram: {type: String, default: ""},
         twitter: {type: String, default: ""},
-        categories: {type: String, default: ""},
+        categories: {type: Array, default: []},
         dateCreated: {type: Date, default: Date.now},
         role: { type: String, enum: ['admin', 'business', 'partner', 'regular'], default: 'regular'}
     }, {collection: "user"}

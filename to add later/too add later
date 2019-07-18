@@ -1,0 +1,16 @@
+// drop down menu
+<div className="input-group-append">
+                            <div className="dropdown-menu">
+                                <a className="dropdown-item" href="#">Near Me</a>
+                                <a className="dropdown-item" href="#">Dorchester</a>
+                                <a className="dropdown-item" href="#">Roxbury</a>
+                                <a className="dropdown-item" href="#">Mattapan</a>
+                                <a className="dropdown-item" href="#">Jamaica Plain</a>
+                                <a className="dropdown-item" href="#">Greater Boston Area</a>
+                                <a className="dropdown-item" href="#">Somerville</a>
+                                <a className="dropdown-item" href="#">North America</a>
+                                <div role="separator" className="dropdown-divider"></div>
+                                <a className="dropdown-item" href="#">Global</a>
+                            </div>
+                        </div>
+
